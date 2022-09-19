@@ -4,7 +4,6 @@
 /public/storage
 /storage/*.key
 /vendor
-.env
 .env.backup
 .phpunit.result.cache
 Homestead.json
@@ -16,6 +15,5 @@ yarn-error.log
 /.vscode
 
 # Project exclude paths
-/storage/app/
 /storage/debugbar/
 /storage/framework/
