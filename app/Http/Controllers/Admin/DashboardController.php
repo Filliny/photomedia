@@ -17,7 +17,7 @@ class DashboardController extends Controller
 
     public function user_index(){
 
-        $articles =  Article::orderByDesc('created_at')->with(['category','tags'])->take(3)->get();
+        $articles =  Article::orderByDesc('created_at')->where('user_id','=',Auth::user()->id)->with(['category','tags'])->take(3)->get();
         return view('user.overview',compact('articles'));
     }
 }

@@ -21,7 +21,7 @@
         </div>
     </div>
     <!-- welcome_protomedia_end -->
-
+{{--    @livewire('search')--}}
     <!-- photographi_area_start -->
     <div class="photographi_area">
         <div class="container">
@@ -78,101 +78,23 @@
                 </div>
                 <div class="col-xl-8 col-md-8">
                     <div class="row">
-                        <div class="col-xl-6 col-md-6">
-                            <div class="single_blog">
-                                <div class="blog_thumb">
-                                    <a href="#">
-                                        <img src="/storage/img/most_recent/2.jpg" alt="">
-                                    </a>
-                                </div>
-                                <div class="blog_meta">
-                                    <p><a href="#">Photography I 24 May 2019</a></p>
-                                    <h3><a href="#">
-                                            The Desolate Beauty of <br>
-                                            Greenland
-                                        </a></h3>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-6 col-md-6">
-                            <div class="single_blog">
-                                <div class="blog_thumb">
-                                    <a href="#">
-                                        <img src="/storage/img/most_recent/1.jpg" alt="">
-                                    </a>
-                                </div>
-                                <div class="blog_meta">
-                                    <p><a href="#">Photography I 24 May 2019</a></p>
-                                    <h3><a href="#">
-                                            Lost Is Just a Four Letter <br>
-                                            Word
-                                        </a></h3>
+                        @foreach($last_articles as $last)
+                            <div class="col-xl-6 col-md-6">
+                                <div class="single_blog">
+                                    <div class="blog_thumb">
+                                        <a href="{{route('article',['article'=>$last->slug])}}">
+                                            <img src="{{Storage::url($last->image)}}" alt="">
+                                        </a>
+                                    </div>
+                                    <div class="blog_meta">
+                                        <p><a href="/category/{{$last->category->slug}}">{{$last->category->name}} I {{date('d M Y', strtotime($last->created_at))}}</a></p>
+                                        <h3><a href="{{route('article',['article'=>$last->slug])}}">
+                                                {{$last->name}}
+                                            </a></h3>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-xl-6 col-md-6">
-                            <div class="single_blog">
-                                <div class="blog_thumb">
-                                    <a href="#">
-                                        <img src="/storage/img/most_recent/3.jpg" alt="">
-                                    </a>
-                                </div>
-                                <div class="blog_meta">
-                                    <p><a href="#">Photography I 24 May 2019</a></p>
-                                    <h3><a href="#">
-                                            Break through Photo-graphy <br>
-                                            Filters for Travel Shot
-                                        </a></h3>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-6 col-md-6">
-                            <div class="single_blog">
-                                <div class="blog_thumb">
-                                    <a href="#">
-                                        <img src="/storage/img/most_recent/4.jpg" alt="">
-                                    </a>
-                                </div>
-                                <div class="blog_meta">
-                                    <p><a href="#">Photography I 24 May 2019</a></p>
-                                    <h3><a href="#">
-                                            Tank Releases New Photo <br>
-                                            Protection Concepts
-                                        </a></h3>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-6 col-md-6">
-                            <div class="single_blog">
-                                <div class="blog_thumb">
-                                    <a href="#">
-                                        <img src="/storage/img/most_recent/5.jpg" alt="">
-                                    </a>
-                                </div>
-                                <div class="blog_meta">
-                                    <p><a href="#">Photography I 24 May 2019</a></p>
-                                    <h3><a href="#">
-                                            The Desolate Beauty of <br>
-                                            Greenland
-                                        </a></h3>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-6 col-md-6">
-                            <div class="single_blog">
-                                <div class="blog_thumb">
-                                    <a href="#">
-                                        <img src="/storage/img/most_recent/6.jpg" alt="">
-                                    </a>
-                                </div>
-                                <div class="blog_meta">
-                                    <p><a href="#">Photography I 24 May 2019</a></p>
-                                    <h3><a href="#">
-                                            Lost Is Just a Four Letter <br> Word
-                                        </a></h3>
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
                         <div class="col-xl-12">
                             <div class="btn_area text-center">
                                 <a href="#" class="boxed-btn">Load More</a>

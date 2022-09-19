@@ -20,7 +20,7 @@ class ArticleController extends Controller
         $extends = Auth::user()->role === 'admin'?'admin.dashboard':'dashboard';
 
         if(Auth::user()->role === 'admin'){
-            $articles = Article::paginate(2);
+            $articles = Article::paginate(3);
         }else{
             $articles = Article::where('user_id','=',Auth::user()->id)->paginate(3);
         }
